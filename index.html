@@ -12,44 +12,45 @@
   </head>
   <body>
     <style>
-      #clear-button {
-        display: none;
-      }
-      #load-more-button {
+      #clear-button, #load-more-button, #mentor-title {
         display: none;
       }
     </style>
 
-    <div id="intro">
-      <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
-      <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
-    </div>
+    <div class="container">
 
-    <div class="input-group mb-3" id="search-form">
-      <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term" aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3" >
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="search(document.getElementById('searchTerm').value)">Search</button>
+      <div id="intro">
+        <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
+        <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
       </div>
-    </div>
 
-    <div id="mentor-title">
-      <h2>Mentors list</h2>
-    </div>
+      <div class="input-group mb-3" id="search-form">
+        <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term" aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3" >
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="search(document.getElementById('searchTerm').value)">Search</button>
+        </div>
+      </div>
 
-    <div id="mentors" class="row">
-    </div>
+      <div id="mentor-title">
+        <h2>Mentors list</h2>
+      </div>
 
-    <div id="load-more">
-      <button type="button" class="btn btn-primary" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
-    </div>
+      <div id="mentors" class="row">
+      </div>
 
-    <div id="clear-result">
-      <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
-    </div>
+      <div id="load-more">
+        <button type="button" class="btn btn-primary" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
+      </div>
 
-    <footer>
-      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
-    </footer>
+      <div id="clear-result">
+        <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
+      </div>
+
+      <footer>
+        <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a> v1.0.1</p>
+      </footer>
+
+    </div>
 
     <script type="text/javascript">
       //initial offset
@@ -72,6 +73,11 @@
           .then(response => response.json())
           .then(result => showMentors(result))
           .catch(error => showErrorMessage(error));
+      }
+
+      function showMentorsTitle(){
+        const mentorsTitle = document.getElementById("mentor-title");
+        mentorsTitle.style.display = "block";
       }
 
       function showClearButton(){
@@ -98,6 +104,8 @@
       }
 
       function showMentors(result){
+        showMentorsTitle();
+
         const mentorsDiv = document.querySelector('#mentors');
         for(let count in result.results){
           mentorsDiv.appendChild(createDiv(result.results[count], count));
@@ -110,8 +118,7 @@
       function createDiv(user, count){
         const div = document.createElement('div');
         div.setAttribute("id", "card-"+count);
-        div.setAttribute("class", "card col-sm-2");
-        div.style.width = "18rem";
+        div.setAttribute("class", "card col-sm-3");
         div.style.display = "inline-block";
         document.getElementsByTagName('body')[0].appendChild(div);
 
@@ -157,6 +164,9 @@
 
         const loadMoreButton = document.getElementById("load-more-button");
         loadMoreButton.style.display = "none";
+
+        const mentorsTitle = document.getElementById("mentor-title");
+        mentorsTitle.style.display = "none";
 
       }
 

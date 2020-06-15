@@ -19,6 +19,9 @@
       <input type="text" id="searchTerm" name="searchTerm"/>
       <button type="button" onclick="search(document.getElementById('searchTerm').value)">Search</button>
     </div>
+    <div id="mentors-list">
+      <h2>Mentors list</h2>
+    </div>
 
     <script type="text/javascript">
       function search(params) {
@@ -35,9 +38,14 @@
         };
 
         fetch("https://search.torre.co/people/_search/?&offset=10", requestOptions)
-          .then(response => response.text())
-          .then(result => console.log(result))
+          .then(response => response.json())
+          .then(result => showMentors(result))
           .catch(error => console.log('error', error));
+      }
+
+      function showMentors(result){
+        console.log(result);
+        console.log(result.results[0].picture);
       }
     </script>
     <!-- Optional JavaScript -->

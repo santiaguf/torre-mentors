@@ -24,23 +24,36 @@
       <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
       <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
     </div>
-    <div id="search-form">
-      <input type="text" id="searchTerm" class="input" name="searchTerm" minlength="3"/>
-      <button type="button" onclick="search(document.getElementById('searchTerm').value)">Search</button>
+
+    <div class="input-group mb-3" id="search-form">
+      <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term" aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3" >
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="search(document.getElementById('searchTerm').value)">Search</button>
+      </div>
     </div>
+
     <div id="mentor-title">
       <h2>Mentors list</h2>
     </div>
+
     <div id="mentors" class="row">
     </div>
-    <div id="clear-result">
-      <button type="button" onclick="clearList()" id="clear-button">Clear</button>
-    </div>
+
     <div id="load-more">
-      <button type="button" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
+      <button type="button" class="btn btn-primary" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
     </div>
-    <footer>
-      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
+
+    <div id="clear-result">
+      <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
+    </div>
+
+    <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+        <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
+      </div>
     </footer>
 
     <script type="text/javascript">

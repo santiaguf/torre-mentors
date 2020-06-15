@@ -11,21 +11,34 @@
     <title>Torre mentors</title>
   </head>
   <body>
+    <style>
+      #clear-button {
+        display: none;
+      }
+    </style>
+
     <div id="intro">
-      <h1>Welcome to Torre Mentors</h1>
+      <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
       <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
     </div>
     <div id="search-form">
       <input type="text" id="searchTerm" class="input" name="searchTerm" minlength="3"/>
       <button type="button" onclick="search(document.getElementById('searchTerm').value)">Search</button>
     </div>
-    <h2>Mentors list</h2>
+    <div id="mentor-title">
+      <h2>Mentors list</h2>
+    </div>
     <div id="mentors" class="row">
     </div>
-
     <div id="clear-result">
-      <button type="button" onclick="clearList()">Clear</button>
+      <button type="button" onclick="clearList()" id="clear-button">Clear</button>
     </div>
+    <div id="load-more">
+      <button type="button" onclick="search(document.getElementById('searchTerm').value)">Load More</button>
+    </div>
+    <footer>
+      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
+    </footer>
 
     <script type="text/javascript">
       function search(params) {
@@ -52,6 +65,8 @@
         for(let count in result.results){
           mentorsDiv.appendChild(createDiv(result.results[count], count));
         }
+        const clearButton = document.getElementById("clear-button");
+        clearButton.style.display = "block";
       }
 
       function createDiv(user, count){
@@ -97,6 +112,15 @@
       function clearList(){
         const mentors = document.getElementById("mentors");
         mentors.innerHTML = '';
+
+        const clearButton = document.getElementById("clear-button");
+
+        if (clearButton.style.display === "none") {
+          clearButton.style.display = "block";
+        } else {
+          clearButton.style.display = "none";
+        }
+
       }
 
       const node = document.getElementById("searchTerm");

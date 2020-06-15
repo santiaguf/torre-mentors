@@ -11,11 +11,35 @@
     <title>Torre mentors</title>
   </head>
   <body>
-    <div>
-    	<h1>Welcome to Torre Mentors</h1>
-    	<span>Connect with mentors on Torre</span>
+    <div id="intro">
+      <h1>Welcome to Torre Mentors</h1>
+      <span>Connect with mentors on Torre. Just type a topic you're learning, and meet your next Mentor, then Signal him on Torre</span>
+    </div>
+    <div id="search-form">
+      <input type="text" id="searchTerm" name="searchTerm"/>
+      <button type="button" onclick="search(document.getElementById('searchTerm').value)">Search</button>
     </div>
 
+    <script type="text/javascript">
+      function search(params) {
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json");
+
+        var raw = JSON.stringify({"and":[{"opento":{"term":"mentoring"}},{"skill":{"term":params,"experience":"potential-to-develop"}}]});
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+
+        fetch("https://search.torre.co/people/_search/?&offset=10", requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+      }
+    </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

@@ -47,13 +47,8 @@
       <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
     </div>
 
-    <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-        <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
-      </div>
+    <footer>
+      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
     </footer>
 
     <script type="text/javascript">
@@ -76,7 +71,19 @@
         fetch(url, requestOptions)
           .then(response => response.json())
           .then(result => showMentors(result))
-          .catch(error => console.log('error', error));
+          .catch(error => showErrorMessage(error));
+      }
+
+      function showErrorMessage(error){
+        const mentorsDiv = document.querySelector('#mentors');
+        const div = document.createElement('div');
+        div.setAttribute("id", "error-card");
+        div.setAttribute("class", "card col-sm-2 alert alert-danger");
+        div.style.width = "18rem";
+        div.style.display = "inline-block";
+        div.textContent = "Sorry, we can't load mentors list, error: "+error;
+
+        mentorsDiv.appendChild(div);
       }
 
       function showMentors(result){

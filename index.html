@@ -23,7 +23,9 @@
     <div id="mentors" class="row">
     </div>
 
-    <div id=></div>
+    <div id="clear-result">
+      <button type="button" onclick="clearList()">Clear</button>
+    </div>
 
     <script type="text/javascript">
       function search(params) {
@@ -90,6 +92,11 @@
         desc.appendChild(mentorHeadline);
 
         return div;
+      }
+
+      function clearList(){
+        const mentors = document.getElementById("mentors");
+        mentors.innerHTML = '';
       }
 
       const node = document.getElementById("searchTerm");

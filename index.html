@@ -13,10 +13,10 @@
   <body>
     <div id="intro">
       <h1>Welcome to Torre Mentors</h1>
-      <span>Connect with mentors on Torre. Just type a topic you're learning, and meet your next Mentor, then Signal him on Torre</span>
+      <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
     </div>
     <div id="search-form">
-      <input type="text" id="searchTerm" name="searchTerm"/>
+      <input type="text" id="searchTerm" class="input" name="searchTerm" minlength="3"/>
       <button type="button" onclick="search(document.getElementById('searchTerm').value)">Search</button>
     </div>
     <h2>Mentors list</h2>
@@ -91,6 +91,12 @@
         return div;
       }
 
+      const node = document.getElementById("searchTerm");
+      node.addEventListener("keyup", function(event) {
+          if (event.key === "Enter") {
+            search(document.getElementById('searchTerm').value);
+          }
+      });
     </script>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

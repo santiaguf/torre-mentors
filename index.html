@@ -74,6 +74,16 @@
           .catch(error => showErrorMessage(error));
       }
 
+      function showClearButton(){
+        const clearButton = document.getElementById("clear-button");
+        clearButton.style.display = "block";
+      }
+
+      function showLoadMoreButton(){
+        const loadMoreButton = document.getElementById("load-more-button");
+        loadMoreButton.style.display = "block";
+      }
+
       function showErrorMessage(error){
         const mentorsDiv = document.querySelector('#mentors');
         const div = document.createElement('div');
@@ -84,6 +94,7 @@
         div.textContent = "Sorry, we can't load mentors list, error: "+error;
 
         mentorsDiv.appendChild(div);
+        showClearButton();
       }
 
       function showMentors(result){
@@ -91,10 +102,8 @@
         for(let count in result.results){
           mentorsDiv.appendChild(createDiv(result.results[count], count));
         }
-        const clearButton = document.getElementById("clear-button");
-        clearButton.style.display = "block";
-        const loadMoreButton = document.getElementById("load-more-button");
-        loadMoreButton.style.display = "block";
+        showClearButton();
+        showLoadMoreButton();
         offset += 10;
       }
 

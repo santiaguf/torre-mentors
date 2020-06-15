@@ -15,6 +15,9 @@
       #clear-button {
         display: none;
       }
+      #load-more-button {
+        display: none;
+      }
     </style>
 
     <div id="intro">
@@ -34,13 +37,16 @@
       <button type="button" onclick="clearList()" id="clear-button">Clear</button>
     </div>
     <div id="load-more">
-      <button type="button" onclick="search(document.getElementById('searchTerm').value)">Load More</button>
+      <button type="button" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
     </div>
     <footer>
       <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a></p>
     </footer>
 
     <script type="text/javascript">
+      //initial offset
+      let offset = 10;
+
       function search(params) {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -53,8 +59,8 @@
           body: raw,
           redirect: 'follow'
         };
-
-        fetch("https://search.torre.co/people/_search/?&offset=10", requestOptions)
+        let url = "https://search.torre.co/people/_search/?&offset="+offset;
+        fetch(url, requestOptions)
           .then(response => response.json())
           .then(result => showMentors(result))
           .catch(error => console.log('error', error));
@@ -67,6 +73,9 @@
         }
         const clearButton = document.getElementById("clear-button");
         clearButton.style.display = "block";
+        const loadMoreButton = document.getElementById("load-more-button");
+        loadMoreButton.style.display = "block";
+        offset += 10;
       }
 
       function createDiv(user, count){
@@ -112,14 +121,13 @@
       function clearList(){
         const mentors = document.getElementById("mentors");
         mentors.innerHTML = '';
+        offset = 10;
 
         const clearButton = document.getElementById("clear-button");
+        clearButton.style.display = "none";
 
-        if (clearButton.style.display === "none") {
-          clearButton.style.display = "block";
-        } else {
-          clearButton.style.display = "none";
-        }
+        const loadMoreButton = document.getElementById("load-more-button");
+        loadMoreButton.style.display = "none";
 
       }
 

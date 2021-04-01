@@ -1,262 +1,71 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Torre mentors</title>
-  </head>
-  <body>
-    <style>
-      #clear-button, #load-more-button, #mentor-title {
-        display: none;
-      }
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
-      /* The Modal (background) */
-      .modal {
-        display: none; /* Hidden by default */
-        position: fixed; /* Stay in place */
-        z-index: 1000; /* Sit on top */
-        padding-top: 100px; /* Location of the box */
-        left: 0;
-        top: 0;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
-        overflow: auto; /* Enable scroll if needed */
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-      }
+  <title>Torre mentors</title>
+</head>
 
-      /* Modal Content */
-      .modal-content {
-        background-color: #fefefe;
-        margin: auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-      }
+<body>
+  <link rel="stylesheet" href="css/style.css">
 
-      /* The Close Button */
-      .close {
-        color: #aaaaaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-      }
+  <div class="container">
 
-      .close:hover,
-      .close:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-      }
-
-    </style>
-
-    <div class="container">
-
-      <!-- The Modal -->
-      <div id="myModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close"></span>
-          <p id="loading">Loading...</p>
-        </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="close"></span>
+        <p id="loading">Loading...</p>
       </div>
-
-      <div id="intro">
-        <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
-        <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet your next Mentor, then Signal him on Torre</span>
-      </div>
-
-      <div class="input-group mb-3" id="search-form">
-        <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term" aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3" >
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button" id="button-addon2" onclick="search(document.getElementById('searchTerm').value)">Search</button>
-        </div>
-      </div>
-
-      <div id="mentor-title">
-        <h2>Mentors list</h2>
-      </div>
-
-      <div id="mentors" class="row">
-      </div>
-
-      <div id="load-more">
-        <button type="button" class="btn btn-primary" onclick="search(document.getElementById('searchTerm').value)" id="load-more-button">Load More</button>
-      </div>
-
-      <div id="clear-result">
-        <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
-      </div>
-
-      <footer>
-        <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a> v1.0.1</p>
-      </footer>
-
     </div>
 
-    <script type="text/javascript">
-      //initial offset
-      let offset = 10;
+    <div id="intro">
+      <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
+      <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet
+        your next Mentor, then Signal him on Torre</span>
+    </div>
 
-      function LoadingText(action){
-        if (action) {
-          modal.style.display = "block";
-        }else{
-          modal.style.display = "none";
-        }
-      }
+    <div class="input-group mb-3" id="search-form">
+      <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term"
+        aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+          onclick="search(document.getElementById('searchTerm').value)">Search</button>
+      </div>
+    </div>
 
-      function search(params) {
-        LoadingText(true);
+    <div id="mentor-title">
+      <h2>Mentors list</h2>
+    </div>
 
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/json");
+    <div id="mentors" class="row">
+    </div>
 
-        var raw = JSON.stringify({"and":[{"opento":{"term":"mentoring"}},{"skill":{"term":params,"experience":"potential-to-develop"}}]});
+    <div id="load-more">
+      <button type="button" class="btn btn-primary" onclick="search(document.getElementById('searchTerm').value)"
+        id="load-more-button">Load More</button>
+    </div>
 
-        var requestOptions = {
-          method: 'POST',
-          headers: myHeaders,
-          body: raw,
-          redirect: 'follow'
-        };
-        let url = "https://search.torre.co/people/_search/?&offset="+offset;
-        fetch(url, requestOptions)
-          .then(response => response.json())
-          .then(result => showMentors(result))
-          .catch(error => showErrorMessage(error));
-      }
+    <div id="clear-result">
+      <button type="button" class="btn btn-warning" onclick="clearList()" id="clear-button">Clear</button>
+    </div>
 
-      function showMentorsTitle(){
-        const mentorsTitle = document.getElementById("mentor-title");
-        mentorsTitle.style.display = "block";
-      }
+    <footer>
+      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a
+          href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a> v1.0.1</p>
+    </footer>
 
-      function showClearButton(){
-        const clearButton = document.getElementById("clear-button");
-        clearButton.style.display = "block";
-      }
+  </div>
 
-      function showLoadMoreButton(){
-        const loadMoreButton = document.getElementById("load-more-button");
-        loadMoreButton.style.display = "block";
-      }
+  <script type="text/javascript" src="js/mentors.js"></script>
+</body>
 
-      function showErrorMessage(error){
-        LoadingText(false);
-
-        const mentorsDiv = document.querySelector('#mentors');
-        const div = document.createElement('div');
-        div.setAttribute("id", "error-card");
-        div.setAttribute("class", "card col-sm-2 alert alert-danger");
-        div.style.width = "18rem";
-        div.style.display = "inline-block";
-        div.textContent = "Sorry, we can't load mentors list, error: "+error;
-
-        mentorsDiv.appendChild(div);
-        showClearButton();
-      }
-
-      function showMentors(result){
-        LoadingText(false);
-        showMentorsTitle();
-
-        const mentorsDiv = document.querySelector('#mentors');
-        for(let count in result.results){
-          mentorsDiv.appendChild(createDiv(result.results[count], count));
-        }
-        showClearButton();
-        showLoadMoreButton();
-        offset += 10;
-      }
-
-      function createDiv(user, count){
-        const div = document.createElement('div');
-        div.setAttribute("id", "card-"+count);
-        div.setAttribute("class", "card col-sm-3");
-        div.style.display = "inline-block";
-        document.getElementsByTagName('body')[0].appendChild(div);
-
-        const link = document.createElement('a');
-        link.setAttribute("id", "link-"+count);
-        link.setAttribute("href", "https://bio.torre.co/"+`${user.username}`);
-        link.setAttribute("target", "_blank");
-        div.appendChild(link);
-
-        const img = document.createElement('img');
-        img.setAttribute("id", "img-"+count);
-        img.setAttribute("src", `${user.picture}`);
-        img.setAttribute("class","card-img-top");
-        link.appendChild(img);
-
-        const desc = document.createElement('div');
-        desc.setAttribute("id", "card-text-"+count);
-        desc.setAttribute("class","card-body");
-        link.appendChild(desc);
-
-        const mentorName = document.createElement('h5');
-        mentorName.setAttribute("id", "name-"+count);
-        mentorName.setAttribute("class","card-title");
-        mentorName.textContent = `${user.name}`;
-        desc.appendChild(mentorName);
-
-        const mentorHeadline = document.createElement('p');
-        mentorHeadline.setAttribute("id", "headline-"+count);
-        mentorHeadline.setAttribute("class","card-text");
-        mentorHeadline.textContent = `${user.professionalHeadline}`;
-        desc.appendChild(mentorHeadline);
-
-        return div;
-      }
-
-      function clearList(){
-        const mentors = document.getElementById("mentors");
-        mentors.innerHTML = '';
-        offset = 10;
-
-        const clearButton = document.getElementById("clear-button");
-        clearButton.style.display = "none";
-
-        const loadMoreButton = document.getElementById("load-more-button");
-        loadMoreButton.style.display = "none";
-
-        const mentorsTitle = document.getElementById("mentor-title");
-        mentorsTitle.style.display = "none";
-
-      }
-
-      const node = document.getElementById("searchTerm");
-      node.addEventListener("keyup", function(event) {
-          if (event.key === "Enter") {
-            search(document.getElementById('searchTerm').value);
-          }
-      });
-
-      // Get the modal
-      var modal = document.getElementById("myModal");
-
-      // Get the <span> element that closes the modal
-      var span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function() {
-        modal.style.display = "none";
-      }
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function(event) {
-        if (event.target == modal) {
-          modal.style.display = "none";
-        }
-      }
-
-    </script>
-  </body>
 </html>

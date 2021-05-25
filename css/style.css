@@ -1,7 +1,14 @@
+
+
 #clear-button,
 #load-more-button,
 #mentor-title {
   display: none;
+}
+
+body {
+  background-color: rgb(39 42 45);
+  color: #cddc39;
 }
 
 /* The Modal (background) */
@@ -15,17 +22,26 @@
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: #b4b4b6; /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #b4b4b6;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+}
+
+.card {
+  background-color: #b4b4b6;
+  color: #cddc39;
+}
+
+.card a:link{
+  color:#cddc39;
 }
 
 /* The Close Button */

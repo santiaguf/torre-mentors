@@ -152,3 +152,17 @@ window.onclick = (event) => {
     modal.style.display = 'none';
   }
 };
+
+// clear list
+const clearButton = document.getElementById('clear-button');
+clearButton.addEventListener('click', () => {
+  clearList();
+});
+
+const searchButton = document.getElementsByClassName('search');
+
+Array.from(searchButton).forEach((el) => {
+  el.addEventListener('click', () => {
+    search(document.getElementById('searchTerm').value);
+  });
+});

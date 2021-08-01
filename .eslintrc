@@ -1,5 +1,15 @@
 {
-  "extends": ["airbnb"],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": "eslint:recommended",
+  "rules": {
+    "no-console": "warn"
+  },
   "parser": "babel-eslint",
   "globals": {
       "document": true,

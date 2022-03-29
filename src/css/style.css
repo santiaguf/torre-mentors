@@ -1,14 +1,11 @@
-
-
 #clear-button,
 #load-more-button,
 #mentor-title {
   display: none;
 }
 
-body {
-  background-color: rgb(39 42 45);
-  color: #cddc39;
+a {
+  color: #004DA3;
 }
 
 /* The Modal (background) */
@@ -33,15 +30,6 @@ body {
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
-}
-
-.card {
-  background-color: #b4b4b6;
-  color: #cddc39;
-}
-
-.card a:link{
-  color:#cddc39;
 }
 
 /* The Close Button */

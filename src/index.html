@@ -1,71 +1,123 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Search mentors on torre.co" />
+    <meta name="theme-color" content="#ffffff" />
 
-<head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link
+      rel="apple-touch-icon"
+      href="img/AppImages/ios/192.png">
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩‍🏫</text></svg>"
+    />
 
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩‍🏫</text></svg>">
+    <link
+      rel='manifest'
+      href='manifest.json'>
 
-  <title>Torre mentors</title>
-</head>
+    <title>Torre mentors</title>
+  </head>
 
-<body>
-  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <link rel="stylesheet" href="css/style.css" />
 
-  <div class="container">
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-      <!-- Modal content -->
-      <div class="modal-content">
-        <span class="close"></span>
-        <p id="loading">Loading...</p>
+    <div class="container">
+      <!-- The Modal -->
+      <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close"></span>
+          <p id="loading">Loading...</p>
+        </div>
       </div>
-    </div>
 
-    <div id="intro">
-      <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
-      <span>Connect with mentors on Torre. Just type a topic you're learning (press enter or press the button), and meet
-        your next Mentor, then Signal him on Torre</span>
-    </div>
-
-    <div class="input-group mb-3" id="search-form">
-      <input type="text" class="input form-control col-md-4" placeholder="Enter a search term" aria-label="Search term"
-        aria-describedby="button-addon2" id="searchTerm" name="searchTerm" minlength="3">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary search" type="button" id="button-addon2">Search</button>
+      <div id="intro">
+        <h1><a href="https://torre.co" target="_blank">Torre</a> Mentors</h1>
+        <span
+          >Connect with mentors on Torre. Just type a topic you're learning
+          (press enter or press the button), and meet your next Mentor, then
+          Signal him on Torre</span
+        >
       </div>
+
+      <div class="input-group mb-3" id="search-form">
+        <input
+          type="text"
+          class="input form-control col-md-4"
+          placeholder="Enter a search term"
+          aria-label="Search term"
+          aria-describedby="button-addon2"
+          id="searchTerm"
+          name="searchTerm"
+          minlength="3"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary search"
+            type="button"
+            id="button-addon2"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+
+      <div id="mentor-title">
+        <h2>Mentors list</h2>
+      </div>
+
+      <div id="mentors" class="row"></div>
+
+      <div id="load-more">
+        <button
+          type="button"
+          class="btn btn-primary search"
+          id="load-more-button"
+        >
+          Load More
+        </button>
+      </div>
+
+      <div id="clear-result">
+        <button type="button" class="btn btn-warning" id="clear-button">
+          Clear
+        </button>
+      </div>
+
+      <footer>
+        <p>
+          Developed by <a href="https://sb.js.org/">Santiago Bernal</a> -
+          <a href="https://github.com/santiaguf/torre-mentors/" target="_blank"
+            >Code</a
+          >
+          v1.1.0
+        </p>
+      </footer>
     </div>
 
-    <div id="mentor-title">
-      <h2>Mentors list</h2>
-    </div>
+    <script defer type="text/javascript" src="js/mentors.js"></script>
 
-    <div id="mentors" class="row">
-    </div>
-
-    <div id="load-more">
-      <button type="button" class="btn btn-primary search" id="load-more-button">Load More</button>
-    </div>
-
-    <div id="clear-result">
-      <button type="button" class="btn btn-warning" id="clear-button">Clear</button>
-    </div>
-
-    <footer>
-      <p>Developed by <a href="https://sb.js.org/">Santiago Bernal</a> - <a
-          href="https://github.com/santiaguf/torre-mentors/" target="_blank">Code</a> v1.1.0</p>
-    </footer>
-
-  </div>
-
-  <script type="text/javascript" src="js/mentors.js"></script>
-</body>
-
+    <script defer type="text/javascript">
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function() {
+          navigator.serviceWorker
+          .register("/serviceWorker.js")
+          .then(res => console.log("service worker registered"))
+          .catch(err => console.log("service worker not registered", err))
+        })
+      }
+    </script>
+  </body>
 </html>

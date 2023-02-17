@@ -1,3 +1,8 @@
+
+*{
+  margin: 0%;
+  padding: 0%;
+}
 #clear-button,
 #load-more-button,
 #mentor-title {
@@ -7,6 +12,16 @@
 a {
   color: #004DA3;
 }
+h1 {
+display: flex;
+justify-content: center;
+}
+h2{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+
 
 /* The Modal (background) */
 .modal {
@@ -46,3 +61,22 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+#mentors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 1%;
+  margin-bottom: 1%;
+}
+.cardh {
+  background-color: aqua;
+  width: 33.33%;  
+  margin-bottom: 1%;
+  
+}
+img{
+  width: 60%;
+}
+

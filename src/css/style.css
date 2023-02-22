@@ -1,3 +1,8 @@
+
+*{
+  margin: 0%;
+  padding: 0%;
+}
 #clear-button,
 #load-more-button,
 #mentor-title {
@@ -6,6 +11,19 @@
 
 a {
   color: #004DA3;
+}
+h1 {
+display: flex;
+justify-content: center;
+padding: 3%;
+}
+h2{
+  display: flex;
+  justify-content: center;
+  padding: 2%;
+}
+#intro{
+  padding: 2%;
 }
 
 /* The Modal (background) */
@@ -46,3 +64,57 @@ a {
   text-decoration: none;
   cursor: pointer;
 }
+#mentors {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+.cardh {
+  display:flex;
+  text-align: center;
+  background-color: rgba(213, 213, 213, 0.2);
+  width: 30.33%;  
+  border-radius: 10%;
+  margin-bottom: 1%;
+  padding-top: 1%;
+}
+img{
+  width: 60%;
+  border-radius: 10%;
+}
+button{
+  width: 150px;
+  border-radius: 10px;
+  padding: 0.5%;
+  margin-top: .5%;
+  background-color: #616060;
+  color: rgb(255, 255, 255);
+}
+#load-more-button{
+  background-color:#1b74da ;
+  margin-left: 2%;
+  color: #000;
+}
+#clear-button{
+  background-color: #ffc107;
+  margin-left: 2%;
+  color: #000;
+}
+input{
+  margin-right: 1%;
+  width: 250px;
+  border-color: #020202;
+}
+
+#search-form{
+  display: flex;
+  padding: 2%;
+}
+span{
+  margin-bottom: 1%;
+  font-size: 1.1em;
+}
+
+

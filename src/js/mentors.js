@@ -31,7 +31,6 @@ function createDiv(user, count) {
   const div = document.createElement('div');
   div.setAttribute('id', `card-${count}`);
   div.setAttribute('class', 'card col-sm-3 cardh');
-  //div.style.display = 'inline-block';
   document.getElementsByTagName('body')[0].appendChild(div);
 
   const link = document.createElement('a');
@@ -86,9 +85,7 @@ function showErrorMessage(error) {
   div.setAttribute('id', 'error-card');
   div.setAttribute('class', 'card col-sm-2 alert alert-danger');
   div.style.width = '18rem';
-  //div.style.display = 'inline-block';
   div.textContent = `Sorry, we can't load mentors list, error: ${error}`;
-
   mentorsDiv.appendChild(div);
   showClearButton();
 }

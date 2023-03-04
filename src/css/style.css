@@ -85,7 +85,7 @@ img{
   border-radius: 10%;
 }
 button{
-  width: 150px;
+  width: 160px;
   border-radius: 10px;
   padding: 0.5%;
   margin-top: .5%;
@@ -104,7 +104,8 @@ button{
 }
 input{
   margin-right: 1%;
-  width: 250px;
+  width: 2300px;
+  height: 25px;
   border-color: #020202;
 }
 
@@ -115,6 +116,16 @@ input{
 span{
   margin-bottom: 1%;
   font-size: 1.1em;
+}
+footer{
+  margin: 2%;
+  text-align: center;
+}
+
+#prefooter{
+  display: flex;
+  justify-content: space-around;
+  padding: 2%;
 }
 
 

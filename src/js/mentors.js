@@ -105,7 +105,7 @@ function search(params) {
     body: raw,
     redirect: 'follow',
   };
-  const url = `https://search.torre.co/people/_search/?&offset=${offset}`;
+  const url = `https://search.torre.co/people/_search/?&offset=${offset}&size=10`;
   fetch(url, requestOptions)
     .then((response) => response.json())
     .then((result) => showMentors(result))
